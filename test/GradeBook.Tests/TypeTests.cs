@@ -8,19 +8,19 @@ namespace GradeBook.Tests
     public class TypeTests
     {
         private int count = 0;
-        private Book GetBook(string name){
-            return new Book(name);
+        private InMemoryBook GetBook(string name){
+            return new InMemoryBook(name);
         }
 
-        private void GetBookSetName(Book book, string name){
-            book = new Book(name);
+        private void GetBookSetName(InMemoryBook book, string name){
+            book = new InMemoryBook(name);
         }
 
-        private void GetBookSetName(ref Book book, string name){
-            book = new Book(name);
+        private void GetBookSetName(ref InMemoryBook book, string name){
+            book = new InMemoryBook(name);
         }
 
-        private void SetName(Book book, string name){
+        private void SetName(InMemoryBook book, string name){
             book.Name=name;
         }
 
