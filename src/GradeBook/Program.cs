@@ -12,7 +12,8 @@ namespace GradeBook
             Console.WriteLine("Please enter the name of your new book");
             bookName = Console.ReadLine();
 
-            var book = new InMemoryBook(bookName);
+            // var book = new InMemoryBook(bookName);
+            var book = new DiskBook(bookName);
             book.GradeAdded += onGradeAdded;
 
             EnterGrades(book);
@@ -25,7 +26,7 @@ namespace GradeBook
             Console.WriteLine($"The letter grade is {result.letter}");
         }
 
-        private static void EnterGrades(Book book)
+        private static void EnterGrades(IBook book)
         {
             double grade = 0.0;
             string input = "s";
