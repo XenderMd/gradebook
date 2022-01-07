@@ -5,6 +5,10 @@ namespace GradeBook
 {
     class Program
     {
+        static void onGradeAdded(object sender, EventArgs e){
+            Console.WriteLine("A grade was added");
+        }
+
         static void Main(string[] args)
         {
             string bookName;
@@ -15,7 +19,8 @@ namespace GradeBook
             bookName = Console.ReadLine();
 
             var book = new Book(bookName);
-
+            book.GradeAdded+=onGradeAdded;
+            
             while(input != "q"){
                 Console.WriteLine("Please enter your next grade");
                 input = Console.ReadLine();

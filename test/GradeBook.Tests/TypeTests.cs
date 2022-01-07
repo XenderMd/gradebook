@@ -7,6 +7,7 @@ namespace GradeBook.Tests
 
     public class TypeTests
     {
+        private int count = 0;
         private Book GetBook(string name){
             return new Book(name);
         }
@@ -36,7 +37,13 @@ namespace GradeBook.Tests
         }
 
         private string ReturnMessage(string message){
+            count++;
             return message;
+        }
+
+        private string IncrementCount(string message){
+            count++;
+            return message.ToLower();
         }
 
         [Fact]
@@ -136,13 +143,15 @@ namespace GradeBook.Tests
 
         [Fact]
         public void WriteLogDelegateCanPointToMethod(){
-            WriteLogDelegate log;
-            log = new WriteLogDelegate(ReturnMessage);
-            //log = ReturnMessage;
+            WriteLogDelegate log = ReturnMessage;
+            // log = new WriteLogDelegate(ReturnMessage);
+            log += ReturnMessage;
+            log += IncrementCount;
             
             var result = log("Hello");
 
-            Assert.Equal("Hello", result);
+            // Assert.Equal("Hello", result);
+            Assert.Equal(3, count);
         }
     }
 };

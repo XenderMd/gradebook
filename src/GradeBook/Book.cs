@@ -3,11 +3,16 @@ using System.Collections.Generic;
 
 namespace GradeBook {
 
-      public class Book{
+        
+    public delegate void GradeAddedDelegate(object sender, EventArgs args);
+
+    public class Book{
 
         private List<double> grades;
 
         private string name;
+
+        public event GradeAddedDelegate GradeAdded;
 
         public string Name{
             get{
@@ -30,6 +35,9 @@ namespace GradeBook {
         public void AddGrade(double grade){
             if(grade<=100 && grade>=0){
                 grades.Add(grade);
+                if(GradeAdded!=null){
+                    GradeAdded(this, new EventArgs());
+                };
             } else {
                 Console.WriteLine("Invalid grade value");
                 throw new ArgumentException($"Invalid {nameof(grade)}");
