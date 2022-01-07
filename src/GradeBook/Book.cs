@@ -7,10 +7,23 @@ namespace GradeBook {
 
         private List<double> grades;
 
-        public string Name;
+        private string name;
+
+        public string Name{
+            get{
+                return name;
+            }
+            set{
+                if(!string.IsNullOrEmpty(value)){
+                    name=value;
+                }else{
+                    throw new FormatException("Invalid or empty book name");
+                }
+            }
+        }
         
         public Book(string name){
-            Name = name;
+            this.name = name;
             grades = new List<double>();
         }
 

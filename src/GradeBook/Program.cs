@@ -34,6 +34,7 @@ namespace GradeBook
             };
 
             var result = book.CalculateStatistics();
+            Console.WriteLine($"The statistics for the book \"{book.Name}\" are:");
             Console.WriteLine($"The lowest grade is {result.low:N2}");
             Console.WriteLine($"The highest grade is {result.high:N2}");
             Console.WriteLine($"The average grade is {result.average:N2}");
