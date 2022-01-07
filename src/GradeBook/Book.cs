@@ -15,7 +15,37 @@ namespace GradeBook {
         }
 
         public void AddGrade(double grade){
-            grades.Add(grade);
+            if(grade<=100 && grade>=0){
+                grades.Add(grade);
+            } else {
+                Console.WriteLine("Invalid grade value");
+            }
+        }
+
+        public void AddLetterGrade(char letter){
+            switch(letter){
+                case 'A':
+                    AddGrade(90);
+                    break;
+                case 'B':
+                    AddGrade(80);
+                    break;
+                case 'C':
+                    AddGrade(70);
+                    break;
+                case 'D':
+                    AddGrade(60);
+                    break;
+                case 'E':
+                    AddGrade(50);
+                    break;
+                case 'F':
+                    AddGrade(40);
+                    break;
+                default:
+                    AddGrade(0);
+                    break;
+            };
         }
         
         public Statistics CalculateStatistics(){
