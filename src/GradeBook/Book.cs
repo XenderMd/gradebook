@@ -23,7 +23,7 @@ namespace GradeBook {
             };
         }
 
-        public void AddLetterGrade(char letter){
+        public void AddGrade(char letter){
             switch(letter){
                 case 'A':
                     AddGrade(90);
