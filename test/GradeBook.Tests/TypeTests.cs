@@ -3,6 +3,8 @@ using Xunit;
 
 namespace GradeBook.Tests
 {
+    public delegate string WriteLogDelegate(string logMessage);
+
     public class TypeTests
     {
         private Book GetBook(string name){
@@ -31,6 +33,10 @@ namespace GradeBook.Tests
 
         private string MakeUppercase(string parameter){
             return parameter.ToUpper();
+        }
+
+        private string ReturnMessage(string message){
+            return message;
         }
 
         [Fact]
@@ -126,6 +132,17 @@ namespace GradeBook.Tests
             //Assert
             Assert.Equal("Denis", name);
             Assert.Equal("DENIS", upper);
+        }
+
+        [Fact]
+        public void WriteLogDelegateCanPointToMethod(){
+            WriteLogDelegate log;
+            log = new WriteLogDelegate(ReturnMessage);
+            //log = ReturnMessage;
+            
+            var result = log("Hello");
+
+            Assert.Equal("Hello", result);
         }
     }
 };
