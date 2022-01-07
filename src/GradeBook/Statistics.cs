@@ -6,6 +6,7 @@ namespace GradeBook {
         public double high;
         public double low;
         public double average;
+        public char letter;
 
         public Statistics(){
             high = double.MinValue;
