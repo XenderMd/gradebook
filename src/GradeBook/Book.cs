@@ -19,7 +19,8 @@ namespace GradeBook {
                 grades.Add(grade);
             } else {
                 Console.WriteLine("Invalid grade value");
-            }
+                throw new ArgumentException($"Invalid {nameof(grade)}");
+            };
         }
 
         public void AddLetterGrade(char letter){

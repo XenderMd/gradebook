@@ -7,10 +7,32 @@ namespace GradeBook
     {
         static void Main(string[] args)
         {
-            var book = new Book("Denis's Grade Book");
-            book.AddGrade(89.1);
-            book.AddGrade(90.5);
-            book.AddGrade(77.3);
+            string bookName;
+            string input = "s";
+            double grade = 0.0;
+
+            Console.WriteLine("Please enter the name of your new book");
+            bookName = Console.ReadLine();
+
+            var book = new Book(bookName);
+
+            while(input != "q"){
+                Console.WriteLine("Please enter your next grade");
+                input = Console.ReadLine();
+                if(input!="q"){
+                    try{
+                        grade=double.Parse(input);
+                        book.AddGrade(grade);
+                    }catch(ArgumentException ex){
+                        Console.WriteLine(ex.Message);
+                    }catch(FormatException ex){
+                        Console.WriteLine(ex.Message);
+                    }finally{
+                        Console.WriteLine("**");
+                    };
+                };
+            };
+
             var result = book.CalculateStatistics();
             Console.WriteLine($"The lowest grade is {result.low:N2}");
             Console.WriteLine($"The highest grade is {result.high:N2}");
