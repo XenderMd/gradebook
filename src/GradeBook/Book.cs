@@ -6,29 +6,13 @@ namespace GradeBook {
         
     public delegate void GradeAddedDelegate(object sender, EventArgs args);
 
-    public class Book{
+    public class Book: NamedObject {
 
         private List<double> grades;
 
-        private string name;
-
         public event GradeAddedDelegate GradeAdded;
-
-        public string Name{
-            get{
-                return name;
-            }
-            set{
-                if(!string.IsNullOrEmpty(value)){
-                    name=value;
-                }else{
-                    throw new FormatException("Invalid or empty book name");
-                }
-            }
-        }
         
-        public Book(string name){
-            this.name = name;
+        public Book(string name):base(name) {
             grades = new List<double>();
         }
 
