@@ -4,3 +4,4 @@ src/GradeBook/obj/
 test/GradeBook.Tests/bin/
 test/GradeBook.Tests/obj/Debug/netcoreapp3.1/GradeBook.Tests.AssemblyInfo.cs
 test/GradeBook.Tests/obj/
+*.txt

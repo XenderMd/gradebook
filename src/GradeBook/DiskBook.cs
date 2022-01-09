@@ -10,13 +10,19 @@ namespace GradeBook {
 
         public override void AddGrade(double grade)
         {
-            using (var writer = File.AppendText($"./{Name}.txt"))
+            if (grade <= 100 && grade >= 0)
             {
-                writer.WriteLine(grade);
-                if(GradeAdded!=null){
-                    GradeAdded(this, new EventArgs());
+                using (var writer = File.AppendText($"./{Name}.txt"))
+                {
+                    writer.WriteLine(grade);
+                    if (GradeAdded != null)
+                    {
+                        GradeAdded(this, new EventArgs());
+                    };
                 };
-            };
+            }else{
+                throw new ArgumentException($"Invalid {nameof(grade)}");
+            }
             
         }
 
